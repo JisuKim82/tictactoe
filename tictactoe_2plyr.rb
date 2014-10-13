@@ -4,58 +4,37 @@ require_relative 'methods.rb'
 grid = []
 counter=9 #when counter reaches 0 it is a tie
 
-(0..8).each {|x| grid[x] = x} #show initial grid with location values
-print_grid(grid)
-
 (0..8).each {|x| grid[x] = ' '} #re-assign each slot to a black space
                               #keeps the alignment of the grid
-game_over = false
+print_grid(grid)
 
+game_over = false
+player = 'X'
 
 until(game_over) do
-  puts "Enter position for X (0-8: zero is top left and 8 is bottom right)"
+  puts "Enter position for #{player} (0-8: zero is top left and 8 is bottom right)"
   value = gets
 
   while(value.to_i>8 || value.to_i<0 || grid[value.to_i] != ' ')
     puts "Invalid Entry/Slot Taken"
-    puts "Enter position for X (0-8: zero is top left and 8 is bottom right)"
-    value = gets
-    
+    print_grid(grid)
+    puts "Enter position for #{player} (0-8: zero is top left and 8 is bottom right)"
+    value = gets 
   end
   
-  grid[value.to_i]='X'
+  grid[value.to_i]="#{player}"
   counter-=1
   print_grid(grid)
   if check_winner?(grid)
-    puts "Player X wins"
-    break
+    puts "Player #{player} wins"
+    game_over = true
   end
 
   if counter == 0
     puts "It's a Tie!"
-    break
-  end
-
-  puts "Enter position for O (0-8: zero is top left and 8 is bottom right)"
-  value = gets
-  
-  while(value.to_i>8 || value.to_i<0 || grid[value.to_i] != ' ')
-    puts "Invalid Entry/Slot Taken"
-    puts "Enter position for O (0-8: zero is top left and 8 is bottom right)"
-    value = gets
+    game_over = true
   end
   
-  grid[value.to_i]='O'
-  counter-=1
-  print_grid(grid)
-  if check_winner?(grid)
-    puts "Player O wins"
-    break
-  end
-  
-  if counter == 0
-    puts "It's a Tie!"
-    break
-  end
- 
+  #Switch player
+  player=='X' ? player='O': player='X'   
 end
