@@ -12,6 +12,7 @@ game_over = false
 player = 'X'
 
 until(game_over) do
+  puts "\nPlayer #{player}'s turn:"
   puts "Enter position for #{player} (0-8: zero is top left and 8 is bottom right)"
   value = gets
 
@@ -24,13 +25,14 @@ until(game_over) do
   
   grid[value.to_i]="#{player}"
   counter-=1
+  system "clear" #clear terminal window = cmd + k
   print_grid(grid)
   if check_winner?(grid)
     puts "Player #{player} wins"
     game_over = true
   end
 
-  if counter == 0
+  if counter == 0 && !check_winner?(grid)
     puts "It's a Tie!"
     game_over = true
   end
