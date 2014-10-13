@@ -1,9 +1,10 @@
 def print_grid(grid)
-  puts "#{grid[0]}" +"  |  " + "#{grid[1]}" + "  |  " + "#{grid[2]}"
-  puts "______________"
-  puts "#{grid[3]}" +"  |  " + "#{grid[4]}" + "  |  " + "#{grid[5]}"
-  puts "______________"
-  puts "#{grid[6]}" +"  |  " + "#{grid[7]}" + "  |  " + "#{grid[8]}"
+  puts "MAP OPTIONS:" + "\t\t" + "CURRENT BOARD:"
+  puts "0" +"  |  " + "1" + "  |  " + "2" + "\t\t" + "#{grid[0]}" + "  |  " + "#{grid[1]}" + "  |  " + "#{grid[2]}"
+  puts "______________" + "\t\t" + "______________"
+  puts "3" +"  |  " + "4" + "  |  " + "5" + "\t\t" + "#{grid[3]}" + "  |  " + "#{grid[4]}" + "  |  " + "#{grid[5]}"
+  puts  "______________" + "\t\t" + "______________"
+  puts "6" +"  |  " + "7" + "  |  " + "8" + "\t\t" + "#{grid[6]}" + "  |  " + "#{grid[7]}" + "  |  " + "#{grid[8]}"
 end
 
 def check_winner?(grid)
